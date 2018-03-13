@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
@@ -65,19 +67,23 @@ public class webActivity extends Activity{
         _userAgent =intent.getStringExtra("userAgent");
         settings.setUserAgentString(_userAgent);
 
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mWeb.setWebContentsDebuggingEnabled(true);
+        }
+
         try{
             _url =intent.getStringExtra("webUrl");
             if(!_url.equals("")) {
                 mWeb.setWebChromeClient(new WebChromeClient() {
-                                            @Override
-                                            public void onReceivedTitle(WebView view, String title) {
-                                                super.onReceivedTitle(view, title);
-                                                try {
-                                                    pageTitle=title;
-                                                } catch (Exception e) {
-                                                }
-                                            }
-                                        }
+                        @Override
+                        public void onReceivedTitle(WebView view, String title) {
+                            super.onReceivedTitle(view, title);
+                            try {
+                                pageTitle=title;
+                            } catch (Exception e) {
+                            }
+                        }
+                    }
                 );
                 mWeb.setWebViewClient(new WebViewClient() {
                     @Override
