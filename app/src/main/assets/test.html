@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>testPage</title>
+        <script>
+           function callJS(){
+              alert("Android调用了JS的callJS方法");
+              return 0;
+           }
+           <!--映射形式-->
+           function callAndroid(){
+               <!--local_obj是webView中addJavascriptInterface定义的代码映射名-->
+               local_obj.callApp("调用了callApp方法");
+           }
+           function callAndroid2(){
+               <!--传入约定的url协议为:js://callApp?arg1=0&arg2=1-->
+               document.location = "js://callApp?arg1=0&arg2=1";
+           }
+        </script>
+        <style>
+            button{
+                width:300px;
+                height:50px;
+            }
+        </style>
+    </head>
+<body>
+<h1>js test page!</h1>
+<button type="button" id="button1" onclick="callAndroid()">button1(使用映射方式调用，存在漏洞)</button>
+<button type="button" id="button2" onclick="callAndroid2()">button1</button>
+</body>
+</html>

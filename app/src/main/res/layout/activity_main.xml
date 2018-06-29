@@ -10,6 +10,12 @@
     android:layout_width="368dp"
     android:layout_height="wrap_content">
     <TextView
+        android:text="测试在线页面"
+        android:textColor="@android:color/white"
+        android:background="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
         android:text="userAgent:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -34,6 +40,24 @@
     <Button
         android:text="go"
         android:id="@+id/goBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <!--<View-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:background="@android:color/darker_gray"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp" />-->
+    <TextView
+        android:text="测试main/assets目录下的本地test.html"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:text="js test"
+        android:id="@+id/jsTestBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>
